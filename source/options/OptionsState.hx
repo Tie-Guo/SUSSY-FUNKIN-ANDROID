@@ -35,12 +35,13 @@ class OptionsState extends MusicBeatState
 	public static var menuBG:FlxSprite;
 
 	function openSelectedSubstate(label:String) {
+		#if android
+		removeVirtualPad();
+		#end
+		
 		switch(label) {
 			//case 'Note Colors':
 				//openSubState(new options.NotesSubState());
-			#if android
-			removeVirtualPad();
-			#end
 			case 'Controls':
 				openSubState(new options.ControlsSubState());
 			case 'Graphics':
