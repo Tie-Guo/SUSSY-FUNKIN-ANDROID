@@ -3480,7 +3480,7 @@ class PlayState extends MusicBeatState
 		var daSong:String = Paths.formatToSongPath(curSong);
 		var songName:String = Paths.formatToSongPath(SONG.song);
 		var addToPath = "";
-		var pulledText:String = Assets.getText(Paths.txt(songName.toLowerCase().replace(' ', '-') + "/info" + addToPath));
+		var pulledText:String = Paths.getTextFromFile(Paths.txt(songName.toLowerCase().replace(' ', '-') + "/info" + addToPath));
 		pulledText += '\n';
 
 		if (pulledText == null)
