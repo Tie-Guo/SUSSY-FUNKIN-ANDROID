@@ -208,19 +208,10 @@ class TitleState extends MusicBeatState
 		#elseif CHARTING
 		MusicBeatState.switchState(new ChartingState());
 		#else
-		if(FlxG.save.data.flashing == null && !FlashingState.leftState) {
-		
-		} else {
-			if (initialized)
-				startIntro();
-			else
-			{
 				new FlxTimer().start(1, function(tmr:FlxTimer)
 				{
 					startIntro();
 				});
-			}
-		}
 		#end
 	}
 
@@ -673,62 +664,10 @@ class TitleState extends MusicBeatState
 			sickBeats++;
 			switch (sickBeats)
 			{
-				case 1:
-
-				
-
 				case 2:
 					//FlxG.sound.music.stop();
 					FlxG.sound.playMusic(Paths.music('freakyMenu'), 0);
 					FlxG.sound.music.fadeIn(4, 0, 0.7);
-				//case 2:
-					
-					createCoolText([''], 15);
-					
-					createCoolText(['', '', '', '']);
-					
-				// credTextShit.text += '\npresent...';
-				// credTextShit.addText();
-				case 3:
-					deleteCoolText();
-				// credTextShit.visible = false;
-				// credTextShit.text = 'In association \nwith';
-				// credTextShit.screenCenter();
-				case 4:
-	
-				case 5:
-
-					//ngSpr.visible = true;
-				// credTextShit.text += '\nNewgrounds';
-				case 6:
-		
-					//ngSpr.visible = false;
-				// credTextShit.visible = false;
-
-				// credTextShit.text = 'Shoutouts Tom Fulp';
-				// credTextShit.screenCenter();
-				case 7:
-		
-					//createCoolText([curWacky[0]]);
-				// credTextShit.visible = true;
-				case 8:
-					//addMoreText(curWacky[1]);
-				// credTextShit.text += '\nlmao';
-				case 9:
-					addMoreText('');
-					//deleteCoolText();
-				// credTextShit.visible = false;
-				// credTextShit.text = "Friday";
-				// credTextShit.screenCenter();
-				case 10:
-					addMoreText('');
-				// credTextShit.visible = true;
-				case 11:
-					addMoreText('');
-				// credTextShit.text += '\nNight';
-				case 12:
-					addMoreText(''); // credTextShit.text += '\nFunkin';
-
 				case 13:
 					skipIntro();
 			}
