@@ -149,13 +149,9 @@ class BaseOptionsMenu extends MusicBeatSubstate
 		}
 
 		if (controls.BACK) {
-			close();
 			FlxG.sound.play(Paths.sound('cancelMenu'));
-			ClientPrefs.saveSettings();
 			removeVirtualPad();
-			#if android
-			addVirtualPad(UP_DOWN, A_B_E);
-			#end
+			MusicBeatState.resetState();
 		}
 
 		if(nextAccept <= 0)
