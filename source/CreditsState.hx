@@ -53,7 +53,7 @@ class CreditsState extends MusicBeatState
 		add(grpOptions);
 
 		#if MODS_ALLOWED
-		var path:String = SUtil.getPath() + 'modsList.txt';
+		var path:String = 'modsList.txt';
 		if(FileSystem.exists(path))
 		{
 			var leMods:Array<String> = CoolUtil.coolTextFile(path);
@@ -81,34 +81,29 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
-			['Psych Engine Android Team'],
-			['MaysLastPlay',		'MaysLastPlay',		'Android Porter',							'https://www.youtube.com/channel/UCx0LxtFR8ROd9sFAq-UxDfw',	'5DE7FF'],
-			['Nuno Filipe Studios',	'nuno',				'Android Porter',							'https://www.youtube.com/channel/UCq7G3p4msVN5SX2CpJ86tTw',	'989c99'],
-			['M.A. Jigsaw', 		'saw',				'AndroidTools Creator/Vpad Designer',		'https://www.youtube.com/channel/UC2Sk7vtPzOvbVzdVTWrribQ', '444444'],
-			['MarioMaster',		    'mariomaster',		    'hi its a me',	 'https://www.youtube.com/c/MarioMaster1997',	'D10616'],
-			['Psych Engine Team'],
-			['Shadow Mario',		'shadowmario',		'Main Programmer of Psych Engine',								'https://twitter.com/Shadow_Mario_',	'444444'],
-			['RiverOaken',			'river',			'Main Artist/Animator of Psych Engine',							'https://twitter.com/RiverOaken',		'B42F71'],
-			['shubs',				'shubs',			'Additional Programmer of Psych Engine',						'https://twitter.com/yoshubs',			'5E99DF'],
-			[''],
-			['Former Engine Members'],
-			['bb-panzu',			'bb',				'Ex-Programmer of Psych Engine',								'https://twitter.com/bbsub3',			'3E813A'],
-			[''],
-			['Engine Contributors'],
-			['iFlicky',				'flicky',			'Composer of Psync and Tea Time\nMade the Dialogue Sounds',		'https://twitter.com/flicky_i',			'9E29CF'],
-			['SqirraRNG',			'sqirra',			'Crash Handler and Base code for\nChart Editor\'s Waveform',	'https://twitter.com/gedehari',			'E1843A'],
-			['EliteMasterEric',		'mastereric',		'Runtime Shaders support',										'https://twitter.com/EliteMasterEric',	'FFBD40'],
-			['PolybiusProxy',		'proxy',			'.MP4 Video Loader Library (hxCodec)',							'https://twitter.com/polybiusproxy',	'DCD294'],
-			['KadeDev',				'kade',				'Fixed some cool stuff on Chart Editor\nand other PRs',			'https://twitter.com/kade0912',			'64A250'],
-			['Keoiki',				'keoiki',			'Note Splash Animations',										'https://twitter.com/Keoiki_',			'D2D2D2'],
-			['Nebula the Zorua',	'nebula',			'LUA JIT Fork and some Lua reworks',							'https://twitter.com/Nebula_Zorua',		'7D40B2'],
-			['Smokey',				'smokey',			'Sprite Atlas Support',											'https://twitter.com/Smokey_5_',		'483D92'],
-			[''],
-			["Funkin' Crew"],
-			['ninjamuffin99',		'ninjamuffin99',	"Programmer of Friday Night Funkin'",							'https://twitter.com/ninja_muffin99',	'CF2D2D'],
-			['PhantomArcade',		'phantomarcade',	"Animator of Friday Night Funkin'",								'https://twitter.com/PhantomArcade3K',	'FADC45'],
-			['evilsk8r',			'evilsk8r',			"Artist of Friday Night Funkin'",								'https://twitter.com/evilsk8r',			'5ABD4B'],
-			['kawaisprite',			'kawaisprite',		"Composer of Friday Night Funkin'",								'https://twitter.com/kawaisprite',		'378FC7']
+			['SUSSY CREDITS'],
+			['Axolotl-mouka',       'fg',				'[coder,artist,charter]\n
+			Hi,i am Axolotl-mouka,I decide this mod',										'https://gamejolt.com/@Axolotl-mouka',	'ffffff'],
+			['butter',      	 'butter',				'[artist,animater]',				'https://space.bilibili.com/3461577554528629',		'ffffff'],
+			['zffgug',      	 'woof',				'[artist,charter,coder]',			'https://space.bilibili.com/498924889',		'ffffff'],
+			['YF',      		 'YF',					'[artist]\nI am YF\na cool boy',	'https://twitter.com/Shadow_Mario_',		'ffffff'],
+			['RRRlies4rr4',      'RRRlies4rr4',			'[artist]\nWhat?',					'https://space.bilibili.com/506237564',		'ffffff'],
+			['MorNStaR',         'MorNStaR',	 		'[composer]',						'https://space.bilibili.com/1878980876',	'ffffff'],
+			['Socy-fox',         'Socy-fox',			'[artist]',							'https://space.bilibili.com/1464181352',	'ffffff'],
+			['Number_TF',        'Number_TF',			'[composer,artist]',				'https://space.bilibili.com/1878980876',	'ffffff'],	
+			['Jin_yao',      	 'gold',				'[sf2maker]',						'https://space.bilibili.com/1303112441',	'ffffff'],
+			['AZjessica',        'AZjessica',			'[animater]',						'https://space.bilibili.com/1565599632',	'ffffff'],
+			['pumpkincrewmate21',		'21',			'[composer]',						'https://space.bilibili.com/2049382657',	'ffffff'],
+			['stranded Carp',         'stranded-Carp',	'[composer]',						'https://space.bilibili.com/515522141',		'ffffff'],
+			['Helper'],
+			['Tie_Guo',  			'TieGuo',			'[mod andriod porter]',    			'https://space.bilibili.com/508557497',     'ffffff'],
+			['Smart-Apple',       'SA',					'I fucked dev',						'https://space.bilibili.com/1471395148',	'ffffff'],
+			['CatsWeiWei',       'CatsWeiWei',			'LOL',								'https://space.bilibili.com/1060088049',	'ffffff'],
+			['Thanks List'],
+			['Laztrix#5670',      'shadowmario',       	'Double Ghost Notes',  				'',	'ffffff'],
+			['ItsTomRoyale615',      'mastereric',      'TaskSong', 						 'https://gamebanana.com/members/2556461',	'ffffff'],
+			['stilic',					'flicky',       'notesCombo',						'', 'ffffff'],
+			['Drawoon_ ',   'bb',     '2v2',			'','ffffff']
 		];
 		
 		for(i in pisspoop){
@@ -149,8 +144,8 @@ class CreditsState extends MusicBeatState
 		descBox.makeGraphic(1, 1, FlxColor.BLACK);
 		descBox.xAdd = -10;
 		descBox.yAdd = -10;
-		descBox.alphaMult = 0.6;
-		descBox.alpha = 0.6;
+		descBox.alphaMult = 0.3;
+		descBox.alpha = 0.3;
 		add(descBox);
 
 		descText = new FlxText(50, FlxG.height + offsetThing - 25, 1180, "", 32);
@@ -163,10 +158,16 @@ class CreditsState extends MusicBeatState
 		bg.color = getCurrentBGColor();
 		intendedColor = bg.color;
 		changeSelection();
-                #if android
-                addVirtualPad(UP_DOWN, A_B);
-                #end
 		super.create();
+
+		var MainTxt:FlxText = new FlxText(0,10,'We remixed vs impostors MainMenu song and used it,\n and its a good mod you have to play around.');
+		MainTxt.setFormat(Paths.font("vcr.ttf"),15,FlxColor.WHITE,CENTER,FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
+		MainTxt.screenCenter(X);
+		
+		#if android
+		addVirtualPad(UP_DOWN, A_B_E);
+		#end
+		//add(MainTxt);
 	}
 
 	var quitting:Bool = false;
@@ -183,7 +184,7 @@ class CreditsState extends MusicBeatState
 			if(creditsStuff.length > 1)
 			{
 				var shiftMult:Int = 1;
-				if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
+				if(FlxG.keys.pressed.SHIFT #if android || _virtualpad.buttonE.justPressed #end) shiftMult = 3;
 
 				var upP = controls.UI_UP_P;
 				var downP = controls.UI_DOWN_P;
