@@ -1,16 +1,32 @@
-name: SUSSY FUNKIN Android Build
-on: workflow_dispatch
+# This is a basic workflow to help you get started with Actions
+
+name: SUSSY-FUNKIN-ANDROID Build
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  Build-gcc:
-    runs-on: ubuntu-20.04
-    permissions: write-all
+  # This workflow contains a single job called "build"
+
+  buildAndroid:
+    name: buildAndroid
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@main
 
       - name: Setup Android NDK
-        id: setup-ndk
         uses: nttld/setup-ndk@main
+        id: setup-ndk
         with:
           ndk-version: r15c
 
@@ -18,7 +34,10 @@ jobs:
         uses: actions/setup-java@main
         with:
           distribution: 'zulu'
-          java-version: '11'
+          java-version: 11
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@main
 
       - name: Setup Haxe
         uses: krdlab/setup-haxe@master
@@ -36,27 +55,30 @@ jobs:
             export/release/android/obj
           key: cache-android-build-gcc
 
-      - name: Installing Libraries
+      - name: Install Haxelib
         run: |
           haxelib setup ~/haxelib
           haxelib install hxcpp 4.2.1 > /dev/null
           haxelib install lime 7.9.0
           haxelib install openfl 9.1.0
-          haxelib --never install flixel 4.11.0
+          haxelib --never install flixel 5.2.2
           haxelib run lime setup flixel
           haxelib install flixel-tools
           haxelib install flixel-ui
+          haxelib install flixel-addons 3.0.2
           haxelib install tjson
           haxelib install hxjsonast
-          haxelib install SScript 4.0.1
+          haxelib install hscript
           haxelib git hxCodec https://github.com/SPLCoding/hxCodec-but-it-works-xd.git
-          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git linc_luajit https://github.com/Sirox228/linc_luajit
-          haxelib git flixel-addons https://github.com/ninjamuffin99/flixel-addons
+          haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
           haxelib git extension-androidtools https://github.com/MaysLastPlay77/extension-androidtools
           haxelib install hxcpp-debug-server
+          haxelib list
+      - name: Create Version Tag
+        run: echo "${{github.run_id}}" > VERSION
 
-      - name: Configure Android
+      - name: Setup Lime
         run: |
           haxelib run lime setup -alias -y
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
@@ -65,9 +87,9 @@ jobs:
           haxelib run lime config ANDROID_SETUP true
           haxelib set lime 7.9.0
           haxelib set openfl 9.1.0
-          haxelib set flixel 4.11.0
+          haxelib set flixel 5.2.2
+          haxelib set flixel-addons 3.0.2
           haxelib set hxcpp 4.2.1
-          haxelib set SScript 4.0.1
         env:
           ANDROID_NDK_HOME: ${{ steps.setup-ndk.outputs.ndk-path }}
 
@@ -117,6 +139,6 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
-          name: SUSSY FUNKIN Android Build
+          name: SUSSY-FUNKIN-ANDROID Build
           path: export/release/android/bin/app/build/outputs/apk/debug
           if-no-files-found: error
