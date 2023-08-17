@@ -11,6 +11,7 @@ import android.FlxHitbox;
 import android.FlxNewHitbox;
 import android.AndroidControls.Config;
 import android.FlxVirtualPad;
+import android.PsychAlphabet;
 
 using StringTools;
 
