@@ -108,7 +108,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			45);
 		option.displayFormat = '%vms';
 		option.scrollSpeed = 15;
-		option.minValue = 15;
+		option.minValue = 45;
 		option.maxValue = 45;
 		//addOption(option);
 
@@ -119,7 +119,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			90);
 		option.displayFormat = '%vms';
 		option.scrollSpeed = 30;
-		option.minValue = 15;
+		option.minValue = 90;
 		option.maxValue = 90;
 		//addOption(option);
 
@@ -130,7 +130,7 @@ class GameplaySettingsSubState extends BaseOptionsMenu
 			135);
 		option.displayFormat = '%vms';
 		option.scrollSpeed = 60;
-		option.minValue = 15;
+		option.minValue = 135;
 		option.maxValue = 135;
 		//addOption(option);
 
