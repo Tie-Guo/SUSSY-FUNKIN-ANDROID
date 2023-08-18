@@ -358,7 +358,7 @@ class FreeplayState extends MusicBeatState
 
 		var shiftMult:Int = 1;
 		//var bgCharNum:Int = 1;
-		if(FlxG.keys.pressed.SHIFT #if android || _virtualpad.buttonY.justPressed #end) shiftMult = 3;
+		if(FlxG.keys.pressed.SHIFT #if android || _virtualpad.buttonY.pressed #end) shiftMult = 3;
 
 		if(songs.length > 1)
 		{
