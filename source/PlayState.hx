@@ -3480,13 +3480,11 @@ class PlayState extends MusicBeatState
 		var daSong:String = Paths.formatToSongPath(curSong);
 		var songName:String = Paths.formatToSongPath(SONG.song);
 		var addToPath = "";
-		var pulledText:String = Paths.getTextFromFile(Paths.txt(songName.toLowerCase().replace(' ', '-') + "/info" + addToPath));
+		pulledText = 'Composer:IDK';
+		if (FileSystem.exists(Paths.txt(songName.toLowerCase().replace(' ', '-') + '/info')))
+			pulledText:String = Paths.getTextFromFile('data' + songName.toLowerCase().replace(' ', '-') + "/info" + addToPath);
+			
 		pulledText += '\n';
-
-		if (pulledText == null)
-		{
-			pulledText = "Composer:IDK";//hope it work
-		}
 
 		songAppearBG = new FlxSprite(-380,150).makeGraphic(430,130, FlxColor.WHITE);
 		songAppearBG.x = -430;

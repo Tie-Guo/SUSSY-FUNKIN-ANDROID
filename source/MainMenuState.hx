@@ -474,6 +474,7 @@ class MainMenuState extends MusicBeatState
 													MusicBeatState.switchState(new ShopState());
 												case'news':
 													FlxG.openURL('https://gamejolt.com/@Axolotl-mouka');
+													selectedSomethin = true;
 												case 'quit':
 													MusicBeatState.switchState(new CutsceneState());
 												case 'update':
