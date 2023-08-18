@@ -3481,7 +3481,7 @@ class PlayState extends MusicBeatState
 		var songName:String = Paths.formatToSongPath(SONG.song);
 		var addToPath = ".txt";
 		var pulledText:String = 'Composer: IDK';
-		if (FileSystem.exists(Paths.txt(songName + '/info')) || getPreloadPath('data/' + songName + '/info.txt'))
+		if (FileSystem.exists(Paths.txt(songName + '/info')) || FileSystem.exists(Paths.getPreloadPath('data/' + songName + '/info.txt')))
 			pulledText = Paths.getTextFromFile('data/' + songName + "/info" + addToPath);
 			
 		pulledText += '\n';
