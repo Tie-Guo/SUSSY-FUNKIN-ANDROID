@@ -2,7 +2,7 @@
 <project>
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="BF Play Among Us" file="BFPlayAmongUs" packageName="com.shadowmario.bpau" package="com.shadowmario.bpau" main="Main" version="0.2.8" company="SB" />
+	<app title="Sussy Funkin Shine Mogus" file="SussyFunkin" packageName="com.shadowmario.sussyfunkin" package="com.shadowmario.sussyfunkin" main="Main" version="0.2.8" company="SB" />
 
 	<!--Switch Export with Unique ApplicationID and Icon-->
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
