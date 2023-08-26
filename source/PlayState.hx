@@ -1858,8 +1858,6 @@ class PlayState extends MusicBeatState
 	function startAndEnd()
 	{
 
-		tasksong();
-
 		if(endingSong)
 			endSong();
 			
