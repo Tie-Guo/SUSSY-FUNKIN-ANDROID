@@ -13,6 +13,8 @@ import openfl.display.Bitmap;
 import openfl.display.BitmapData;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import FunkinLua;
+import sys.FileSystem;
 //import Controls;
 //import flixel.FlxCamera;
 
@@ -23,6 +25,9 @@ class ShopState extends MusicBeatState
 	var colorTween:FlxTween;
 	var shopitem1:FlxButton;
 	var txt2:FlxText;
+
+	//stupid lua things
+	public var luaArray:Array<FunkinLua> = [];
 
 	override public function create():Void
 	{
@@ -60,7 +65,7 @@ class ShopState extends MusicBeatState
 		beanNum.setFormat(Paths.font("AMGUS.ttf"), 40, FlxColor.RED, CENTER,FlxTextBorderStyle.OUTLINE, FlxColor.RED);
 		add(beanNum);
 
-		var txt:FlxText = new FlxText(0,100,'SONG PACKS');
+		var txt:FlxText = new FlxText(0,100,/*'SONG PACKS'*/'Notings here');
 		txt.setFormat(Paths.font("Dum-Regular.ttf"),80, FlxColor.WHITE, CENTER);
 		txt.screenCenter(X);
 		add(txt);
@@ -91,26 +96,26 @@ class ShopState extends MusicBeatState
 
         shopitem1.loadGraphic(Paths.image('shopItem1'));
 		shopitem1.scale.set(0.8,0.8);
+		shopitem1.antialiasing = true;
 		//shopitem1.screenCenter(X);
-        add(shopitem1);
+        //add(shopitem1);
 
 		var shopitem2:FlxButton = new FlxButton(155 + 569 - 125, 120, "", 
 		function()
 		{
 			startSong([
-				'high',
+				'credits',
 			]);
+			startLuasOnFolder('assets/credits-things/LoadSecondJson.lua');
 			//I hate code
 		}
 		);
 
         shopitem2.loadGraphic(Paths.image('shopitem2'));
 		shopitem2.scale.set(0.8,0.8);
+		shopitem2.antialiasing = true;
 		//shopitem1.screenCenter(X);
-        add(shopitem2);
-        #if android
-		addVirtualPad(NONE, B);
-		#end
+        //add(shopitem2);
 	}
 
 	function startSong(songlist:Array<String>, difficulty:Int = 1)
@@ -126,7 +131,8 @@ class ShopState extends MusicBeatState
 
 
 	override public function update(elapsed:Float)
-	{		
+	{
+				
 		if (controls.BACK)
 			{
 				FlxG.sound.play(Paths.sound('cancelMenu'));
@@ -134,6 +140,40 @@ class ShopState extends MusicBeatState
 			}
 			
 		super.update(elapsed);
+	}
+
+	public function startLuasOnFolder(luaFile:String)
+	{
+		for (script in luaArray)
+		{
+			if(script.scriptName == luaFile) return false;
+		}
+
+		#if MODS_ALLOWED
+		var luaToLoad:String = Paths.modFolders(luaFile);
+		if(FileSystem.exists(luaToLoad))
+		{
+			luaArray.push(new FunkinLua(luaToLoad));
+			return true;
+		}
+		else
+		{
+			luaToLoad = Paths.getPreloadPath(luaFile);
+			if(FileSystem.exists(luaToLoad))
+			{
+				luaArray.push(new FunkinLua(luaToLoad));
+				return true;
+			}
+		}
+		#elseif sys
+		var luaToLoad:String = Paths.getPreloadPath(luaFile);
+		if(OpenFlAssets.exists(luaToLoad))
+		{
+			luaArray.push(new FunkinLua(luaToLoad));
+			return true;
+		}
+		#end
+		return false;
 	}
 	
 }

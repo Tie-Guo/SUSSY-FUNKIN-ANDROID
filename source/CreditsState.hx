@@ -81,27 +81,28 @@ class CreditsState extends MusicBeatState
 		#end
 
 		var pisspoop:Array<Array<String>> = [ //Name - Icon name - Description - Link - BG Color
+			['AMONG US'],
+			['innersloth', 'innersloth','','https://www.innersloth.com/','ffffff'],
 			['SUSSY CREDITS'],
-			['Axolotl-mouka',       'fg',				'[coder,artist,charter]\n
-			Hi,i am Axolotl-mouka,I decide this mod',										'https://gamejolt.com/@Axolotl-mouka',	'ffffff'],
-			['butter',      	 'butter',				'[artist,animater]',				'https://space.bilibili.com/3461577554528629',		'ffffff'],
-			['zffgug',      	 'woof',				'[artist,charter,coder]',			'https://space.bilibili.com/498924889',		'ffffff'],
-			['YF',      		 'YF',					'[artist]\nI am YF\na cool boy',	'https://twitter.com/Shadow_Mario_',		'ffffff'],
-			['RRRlies4rr4',      'RRRlies4rr4',			'[artist]\nWhat?',					'https://space.bilibili.com/506237564',		'ffffff'],
-			['MorNStaR',         'MorNStaR',	 		'[composer]',						'https://space.bilibili.com/1878980876',	'ffffff'],
-			['Socy-fox',         'Socy-fox',			'[artist]',							'https://space.bilibili.com/1464181352',	'ffffff'],
-			['Number_TF',        'Number_TF',			'[composer,artist]',				'https://space.bilibili.com/1878980876',	'ffffff'],	
-			['Jin_yao',      	 'gold',				'[sf2maker]',						'https://space.bilibili.com/1303112441',	'ffffff'],
-			['AZjessica',        'AZjessica',			'[animater]',						'https://space.bilibili.com/1565599632',	'ffffff'],
-			['pumpkincrewmate21',		'21',			'[composer]',						'https://space.bilibili.com/2049382657',	'ffffff'],
-			['stranded Carp',         'stranded-Carp',	'[composer]',						'https://space.bilibili.com/515522141',		'ffffff'],
+			['Axolotl-mouka',       'fg',				'Hi,i am Axolotl-mouka,I decide this mod',										'https://gamejolt.com/@Axolotl-mouka',	'ffffff'],
+			['butter',      	 'butter',				'',				'https://space.bilibili.com/3461577554528629',		'ffffff'],
+			['zffgug',      	 'woof',				'wolf',			'https://space.bilibili.com/498924889',		'ffffff'],
+			['YF',      		 'YF',					'I am YF\na cool boy',	'https://twitter.com/Shadow_Mario_',		'ffffff'],
+			['RRRlies4rr4',      'RRRlies4rr4',			'',					'https://space.bilibili.com/506237564',		'ffffff'],
+			['MorNStaR',         'MorNStaR',	 		'',						'https://space.bilibili.com/1878980876',	'ffffff'],
+			['Socy-fox',         'Socy-fox',			'',							'https://space.bilibili.com/1464181352',	'ffffff'],
+			//['Number_TF',        'Number_TF',			'',				'https://space.bilibili.com/1878980876',	'ffffff'],	
+			['Jin_yao',      	 'gold',				'',						'https://space.bilibili.com/1303112441',	'ffffff'],
+			['AZjessica',        'AZjessica',			'',						'https://space.bilibili.com/1565599632',	'ffffff'],
+			['pumpkincrewmate21',		'21',			'',						'https://space.bilibili.com/2049382657',	'ffffff'],
+			['stranded Carp',         'stranded-Carp',	'',						'https://space.bilibili.com/515522141',		'ffffff'],
+			['Tie_Guo',  			'TieGuo',			'mod andriod porter',    			'https://space.bilibili.com/508557497',     'ffffff'],
 			['Helper'],
-			['Tie_Guo',  			'TieGuo',			'[mod andriod porter]',    			'https://space.bilibili.com/508557497',     'ffffff'],
 			['Smart-Apple',       'SA',					'I fucked dev',						'https://space.bilibili.com/1471395148',	'ffffff'],
 			['CatsWeiWei',       'CatsWeiWei',			'LOL',								'https://space.bilibili.com/1060088049',	'ffffff'],
 			['Thanks List'],
 			['Laztrix#5670',      'shadowmario',       	'Double Ghost Notes',  				'',	'ffffff'],
-			['ItsTomRoyale615',      'mastereric',      'TaskSong', 						 'https://gamebanana.com/members/2556461',	'ffffff'],
+			//['ItsTomRoyale615',      'mastereric',      'TaskSong', 						 'https://gamebanana.com/members/2556461',	'ffffff'],
 			['stilic',					'flicky',       'notesCombo',						'', 'ffffff'],
 			['Drawoon_ ',   'bb',     '2v2',			'','ffffff']
 		];
@@ -164,8 +165,10 @@ class CreditsState extends MusicBeatState
 		MainTxt.setFormat(Paths.font("vcr.ttf"),15,FlxColor.WHITE,CENTER,FlxTextBorderStyle.OUTLINE,FlxColor.BLACK);
 		MainTxt.screenCenter(X);
 		
+			
 		#if android
-		addVirtualPad(UP_DOWN, A_B_E);
+		addVirtualPad(UP_DOWN, A_B);
+		addPadCamera();
 		#end
 		//add(MainTxt);
 	}
@@ -184,7 +187,7 @@ class CreditsState extends MusicBeatState
 			if(creditsStuff.length > 1)
 			{
 				var shiftMult:Int = 1;
-				if(FlxG.keys.pressed.SHIFT #if android || _virtualpad.buttonE.pressed #end) shiftMult = 3;
+				if(FlxG.keys.pressed.SHIFT) shiftMult = 3;
 
 				var upP = controls.UI_UP_P;
 				var downP = controls.UI_DOWN_P;

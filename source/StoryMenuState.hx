@@ -64,8 +64,23 @@ class StoryMenuState extends MusicBeatState
 		if(curWeek >= WeekData.weeksList.length) curWeek = 0;
 		persistentUpdate = persistentDraw = true;
 
+		var bg:FlxSprite = new FlxSprite(Paths.image('menuBG'));
+		bg.screenCenter();
+		bg.scale.set(1.05,1.05);
+		add(bg);
+
+		FlxTween.tween(bg,{alpha:0.5},1.5,
+		{
+			type:       PINGPONG
+		});
+
+		var bg2:FlxSprite = new FlxSprite(Paths.image('bg_'));
+		bg2.screenCenter();
+		bg2.scale.set(1.05,1.05);
+		add(bg2);
+
 		secondbg = new FlxSprite().loadGraphic(Paths.image('bg_'));
-		add(secondbg);
+	//	add(secondbg);
 		secondbg.screenCenter();
 
 		var _btnPlay2:FlxButton;
@@ -83,7 +98,7 @@ class StoryMenuState extends MusicBeatState
 
 		_btnPlay2 = new FlxButton(10, 0, "", clickPlay2);
 		_btnPlay2.loadGraphic(Paths.image('Exit'));
-		add(_btnPlay2);
+	//	add(_btnPlay2);
 
 		scoreText = new FlxText(700, 10, 0, "SCORE: 49324858", 36);
 		scoreText.setFormat("VCR OSD Mono", 32);
@@ -107,7 +122,7 @@ class StoryMenuState extends MusicBeatState
 		add(grpWeekText);
 
 		var blackBarThingie:FlxSprite = new FlxSprite().makeGraphic(FlxG.width, 56, FlxColor.BLACK);
-		add(blackBarThingie);
+	//	add(blackBarThingie);
 
 		grpWeekCharacters = new FlxTypedGroup<MenuCharacter>();
 
@@ -165,8 +180,8 @@ class StoryMenuState extends MusicBeatState
 
 		difficultySelectors = new FlxGroup();
 		
-		add(bgYellow);
-		add(bgSprite);
+	//	add(bgYellow);
+	//	add(bgSprite);
 		add(grpWeekCharacters);
 
 		
@@ -215,9 +230,10 @@ class StoryMenuState extends MusicBeatState
 		changeDifficulty();
 
 		add(difficultySelectors);
-		
+	
 		#if android
 		addVirtualPad(FULL, A_B_X_Y);
+		addPadCamera();
 		#end
 
 		super.create();
@@ -279,12 +295,12 @@ class StoryMenuState extends MusicBeatState
 			else if (upP || downP)
 				changeDifficulty();
 
-			if(FlxG.keys.justPressed.CONTROL #if android || _virtualpad.buttonX.justPressed #end)
+			if(FlxG.keys.justPressed.CONTROL #if android || _virtualpad.buttonY.justPressed #end)
 			{
 				persistentUpdate = false;
 				openSubState(new GameplayChangersSubstate());
 			}
-			else if(controls.RESET #if android || _virtualpad.buttonY.justPressed #end)
+			else if(controls.RESET #if android || _virtualpad.buttonX.justPressed #end)
 			{
 				persistentUpdate = false;
 				openSubState(new ResetScoreSubState('', curDifficulty, '', curWeek));

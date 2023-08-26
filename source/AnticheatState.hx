@@ -19,6 +19,7 @@ import flixel.tweens.FlxTween;
 class AnticheatState extends FlxState
 {
 	var colorTween:FlxTween;
+	
 
 	function click():Void
 	{
@@ -30,6 +31,7 @@ class AnticheatState extends FlxState
 	{	
 
 		FlxG.mouse.visible = true;
+		FlxG.sound.playMusic(Paths.music('AC'), 0);
 
 		var bg:FlxSprite = new FlxSprite(-80).loadGraphic(Paths.image('menuBG'));
 		bg.scale.set(1,1);

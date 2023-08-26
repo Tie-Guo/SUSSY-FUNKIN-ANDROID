@@ -371,11 +371,7 @@ class MainMenuState extends MusicBeatState
 		add(versionShit);
 
 		// NG.core.calls.event.logEvent('swag').send();
-		
-		#if android
-		addVirtualPad(NONE, B);
-		#end
-        
+
 		changeItem();
 
 		#if ACHIEVEMENTS_ALLOWED
@@ -389,6 +385,12 @@ class MainMenuState extends MusicBeatState
 				ClientPrefs.saveSettings();
 			}
 		}
+		#end
+		
+			
+		#if android
+		addVirtualPad(NONE, A);
+		addPadCamera();
 		#end
 
 		super.create();
@@ -472,9 +474,6 @@ class MainMenuState extends MusicBeatState
 													MusicBeatState.switchState(new FreeplayState());
 												case 'shop':										
 													MusicBeatState.switchState(new ShopState());
-												case'news':
-													FlxG.openURL('https://gamejolt.com/@Axolotl-mouka');
-													selectedSomethin = true;
 												case 'quit':
 													MusicBeatState.switchState(new CutsceneState());
 												case 'update':
@@ -484,6 +483,13 @@ class MainMenuState extends MusicBeatState
 												case 'options':
 													LoadingState.loadAndSwitchState(new options.OptionsState());
 											}
+
+											if (optionShit[curSelected] == 'news')
+											{
+												CoolUtil.browserLoad('https://gamejolt.com/@Axolotl-mouka');
+												selectedSomethin = false;
+											}
+
 											});
 										}
 									}
@@ -505,12 +511,12 @@ class MainMenuState extends MusicBeatState
 				changeItem(1);
 			}
 
-			if (controls.BACK)
+	/*		if (controls.BACK)
 			{
 				selectedSomethin = true;
 				FlxG.sound.play(Paths.sound('cancelMenu'));
 				MusicBeatState.switchState(new TitleState());
-			}
+			}*/
 
 			if (controls.ACCEPT)
 			{
@@ -569,8 +575,8 @@ class MainMenuState extends MusicBeatState
 			#if desktop
 			else if (FlxG.keys.anyJustPressed(debugKeys))
 			{
-				selectedSomethin = true;
-				MusicBeatState.switchState(new MasterEditorMenu());
+		//		selectedSomethin = true;
+		//		MusicBeatState.switchState(new MasterEditorMenu());
 			}
 			#end
 		}
