@@ -1553,8 +1553,6 @@ class PlayState extends MusicBeatState
 					tankIntro();
 				case 'newthings':
 					startVideo('LetsRAP');
-				case 'high':
-					startDialogue(dialogueJson);
 				case 'dying-fish':
 					startVideo('Shine');
 				default:
